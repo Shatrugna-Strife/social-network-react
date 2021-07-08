@@ -1,11 +1,14 @@
 import React from "react";
 import { Route, Switch } from 'react-router-dom';
 import Home from "./core/Home";
+import Signin from "./user/Signin";
 import Signup from "./user/Signup";
+import Menu from "./core/Menu";
 
 const MainRouter = () =>{
     return (
         <div>
+            <Menu />
             <Switch>
                 {/* <Route path="/" component={Home}/>
                 <Route path="/signup" component={Signup}/>
@@ -18,6 +21,7 @@ const MainRouter = () =>{
                 
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/signup" component={Signup}/>
+                <Route exact path="/signin" component={Signin}/>
 
             </Switch>
         </div>
