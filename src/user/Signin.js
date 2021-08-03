@@ -1,6 +1,6 @@
 import React from "react";import {Component} from "react";
 import { Redirect } from "react-router-dom";
-
+import {signIn} from '../auth/index';
 
 class Signin extends Component{
     constructor(){
@@ -39,7 +39,7 @@ class Signin extends Component{
             password:this.state.password
         }
         //console.log(user);
-        this.signIn(user).then(data=>{
+        signIn(user).then(data=>{
             if(!!data){
                 if(!!data.error){
                     this.setState({error:data.error});
@@ -47,33 +47,17 @@ class Signin extends Component{
                     // authenticate
                     this.authenticate(data,()=>{this.setState({redirectToReferer:true})});
 
-                    this.setState({
-                        email:"",
-                        password:"",
-                        error:"",
-                        loading:false
-                    })
+                    // this.setState({
+                    //     email:"",
+                    //     password:"",
+                    //     error:"",
+                    //     loading:false
+                    // })
                 }
             }else{
                 this.setState({error:"Failed Sending request to the backend",loading:false});
             }
         }); 
-    }
-
-    signIn(user){
-        return fetch("http://localhost:8080/signin",{
-            method:"POST",
-            headers:{
-                Accept:"application/json",
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify(user)
-        }).then(res=>{
-            console.log(res.status);
-            return(res.json());
-        }).catch(err=>{
-            console.log(err);
-        })
     }
 
     render(){
