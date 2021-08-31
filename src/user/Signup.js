@@ -1,6 +1,6 @@
 import React from "react";import {Component} from "react";
 import {signUp} from '../auth/index';
-
+import {Link} from 'react-router-dom';
 class Signup extends Component{
     constructor(){
         super();
@@ -58,7 +58,7 @@ class Signup extends Component{
                 <h2 className="mt-5 mb-5">User Signup</h2>
 
                 <div className="alert alert-danger" style={{display:!!this.state.error?"":"none"}}>{this.state.error}</div>
-                <div className="alert alert-info" style={{display:!!this.state.open?"":"none"}}>Account Created Successfully</div>
+                <div className="alert alert-info" style={{display:!!this.state.open?"":"none"}}>Account Created Successfully. Please <Link to="/signin">Sign In</Link></div>
                 
                 <form>
                     <div className="form-group">
